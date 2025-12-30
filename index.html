@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recipe Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #2e7d32;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin-top: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1b5e20;
+        }
+        .recipe-output {
+            margin-top: 30px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #2e7d32;
+            display: none;
+        }
+        .recipe-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI Recipe Generator 🍳</h1>
+        <p>Enter the ingredients you have, and I'll suggest a recipe!</p>
+        
+        <input type="text" id="ingredients" placeholder="e.g., Chicken, Rice, Soy Sauce...">
+        <br>
+        <button onclick="generateRecipe()">Generate Recipe</button>
+
+        <div id="result" class="recipe-output">
+            <div id="outputTitle" class="recipe-title"></div>
+            <div id="outputText"></div>
+        </div>
+    </div>
+
+    <script>
+        function generateRecipe() {
+            const input = document.getElementById('ingredients').value;
+            const outputBox = document.getElementById('result');
+            const outputTitle = document.getElementById('outputTitle');
+            const outputText = document.getElementById('outputText');
+
+            if (input.trim() === "") {
+                alert("Please enter some ingredients first!");
+                return;
+            }
+
+            // Simulating an AI response
+            outputBox.style.display = "block";
+            outputTitle.innerText = "Suggested Recipe: Homestyle " + input.split(',')[0] + " Delight";
+            outputText.innerHTML = `
+                <p><strong>Based on your ingredients (${input}), here is a simple idea:</strong></p>
+                <ul>
+                    <li>Prepare your ${input}.</li>
+                    <li>Sauté with garlic and onions until fragrant.</li>
+                    <li>Season with salt, pepper, and a pinch of herbs.</li>
+                    <li>Simmer for 20 minutes on low heat.</li>
+                    <li>Serve hot and enjoy!</li>
+                </ul>
+            `;
+        }
+    </script>
+
+</body>
+</html>
